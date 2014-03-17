@@ -69,14 +69,14 @@ public class KafkaProducer {
                 && prop.getProperty("zk.connect") == null
                 && prop.getProperty("metadata.broker.list") == null
                 && prop.getProperty("serializer.class") == null) {
-            return false;
-        } else {
             System.out.println("---propertiesFile----");
             System.out.println("zk.connect=zookeeperHost:Port");
             System.out.println("topic=TopicName");
             System.out.println("metadata.broker.list=brokerHost:Port");
             System.out.println("serializer.class="
                     + "kafka.serializer.StringEncoder");
+            return false;
+        } else {
             return true;
         }
     }
