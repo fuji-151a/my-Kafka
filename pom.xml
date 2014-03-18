@@ -11,6 +11,11 @@
       <scope>test</scope>
     </dependency>
     <dependency>
+		<groupId>joda-time</groupId>
+		<artifactId>joda-time</artifactId>
+		<version>2.3</version>
+	</dependency>
+    <dependency>
 		<groupId>com.sksamuel.kafka</groupId>
 		<artifactId>kafka_2.10</artifactId>
 		<version>0.8.0-beta1</version>
