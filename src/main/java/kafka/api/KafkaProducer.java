@@ -147,7 +147,7 @@ public class KafkaProducer {
         KafkaProducer kp = new KafkaProducer(fileName);
         switch (mode) {
             case 0:
-                kp.setSleepTime(1);
+                kp.setSleepTime(Integer.parseInt(args[2]));
                 try {
                     kp.contProduce(data);
                 } catch (InterruptedException e) {
