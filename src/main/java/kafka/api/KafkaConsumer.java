@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
@@ -53,11 +54,13 @@ public class KafkaConsumer {
      */
     public void consume(int numThreads) throws UnsupportedEncodingException {
         Map<String, Integer> topicCountMap = ImmutableMap.of(topic, numThreads);
-        KafkaStream<byte[], byte[]> stream
-            = consumer.createMessageStreams(topicCountMap).get(topic).get(0);
-        for (MessageAndMetadata<byte[], byte[]> msg : stream) {
-            String data = new String(msg.message(), "UTF-8");
-            System.out.println(data);
+        List<KafkaStream<byte[], byte[]>> streams
+            = consumer.createMessageStreams(topicCountMap).get(topic);
+        for (KafkaStream<byte[], byte[]> stream : streams) {
+            for (MessageAndMetadata<byte[], byte[]> msg : stream) {
+                String data = new String(msg.message(), "UTF-8");
+                System.out.println(data);
+            }
         }
     }
 
