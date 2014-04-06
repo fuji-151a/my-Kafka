@@ -13,7 +13,7 @@ import kafka.producer.ProducerConfig;
 
 /**
  * KafkaProducer.
- * @author yuya
+ * @author fuji
  *
  */
 public class KafkaProducer {
@@ -133,6 +133,16 @@ public class KafkaProducer {
         return dt.toString("[yyyy/MM/dd HH:mm:ss]");
     }
 
+    /**
+     * args[0]:propertiesファイル
+     * args[1]:mode
+     * ・cont:ずっとproduce.
+     * ・stat:件数指定のproduce
+     * args[2]
+     * if mode is cont, sleep time.
+     * if mode is stat, produce Number
+     * @param args : 引数
+     */
     public static void main(String[] args) {
         if (args.length < 3) {
             System.out.println("Please Input:");
